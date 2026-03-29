@@ -480,6 +480,8 @@ mark,
 .img-fluid {
   max-width: 100%;
   height: auto;
+  margin: 0.5rem auto;
+  border-radius: 0.25rem;
 }
 
 .img-thumbnail {

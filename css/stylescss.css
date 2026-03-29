@@ -5,7 +5,10 @@ body, html {
 body {
   font-family: "Open Sans", sans-serif;
   color: #595959;
-  position: relative; }
+  position: relative;
+  max-width: 100%;
+  overflow-x: hidden;
+}
   body h1, body h2 {
     text-transform: uppercase;
     color: #1f2c34;
@@ -124,6 +127,29 @@ body {
   .movie .row {
     padding: 3% 2%; }
 
+.movie .col-sm-4, .movie .col-md-3, .movie .col-lg-2 {
+  padding: 0.5rem;
+}
+
+.movie .hoverImg {
+  display: block;
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.movie .hoverImg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.movie .hoverImg:hover img {
+  transform: scale(1.05);
+}
+
 .booking aside {
   background: url("../images/05-Image.jpg") no-repeat center;
   background-size: 100% auto;
@@ -210,7 +236,85 @@ footer .partenaire ul li{
     color: lightgrey;
     padding-right: 2%; }
 
-.film01 aside {
+/* Clickable image styles */
+.filmlist .hoverImg, .filmImage {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  border-radius: 15px;
+}
+
+.filmlist .hoverImg {
+  display: block;
+  width: 280px;
+  height: 210px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.filmlist .hoverImg:hover, .filmImage:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(233, 107, 85, 0.4);
+}
+
+.filmlist .hoverImg img {
+  display: block;
+  width: 280px;
+  height: 210px;
+  object-fit: fill;
+  border-radius: 15px;
+  transition: opacity 0.3s ease;
+}
+
+.filmImage img {
+  display: block;
+  width: 100%;
+  height: 250px;
+  object-fit: fill;
+  border-radius: 15px;
+  transition: opacity 0.3s ease;
+}
+
+.filmlist .hoverImg:hover img, .filmImage:hover img {
+  opacity: 0.9;
+}
+
+@media (max-width: 767.98px) {
+  .container-fluid.filmlist .row > aside,
+  .container-fluid.filmlist .row > article {
+    flex: 0 0 100%;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .container-fluid.filmlist .row > aside {
+    order: 0 !important;
+  }
+
+  .container-fluid.filmlist .row > article {
+    order: 1 !important;
+  }
+
+  .container-fluid.filmlist aside {
+    text-align: center;
+  }
+
+  .filmlist .hoverImg {
+    width: 260px;
+    height: 195px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .filmlist .hoverImg img {
+    width: 260px;
+    height: 195px;
+  }
+}
+
+/* .film01 aside {
   background: url("../images/01-films.jpg") no-repeat top;
   background-size: 100% auto;
   height: auto;
@@ -280,7 +384,7 @@ footer .partenaire ul li{
   background: url("../images/12-films.jpg") no-repeat top;
   background-size: 100% auto;
   height: auto;
-  min-height: 200px; }
+  min-height: 200px; } */
 
 .infoBlog {
   color: lightgrey;
@@ -290,13 +394,65 @@ footer .partenaire ul li{
   font-family: 'Montserrat', sans-serif;
   font-weight: 600; }
 
+.card-img-top {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+}
+
+.blogCards .card-img-top {
+  width: 100% !important;
+  height: 220px !important;
+  min-height: 220px !important;
+  max-height: 220px !important;
+}
+
+/* Custom styles for the full-width map image */
+.map-full-width {
+  width: 100%;
+  height: 400px; /* A reasonable height for a banner map */
+  object-fit: cover; /* Ensures the image covers the area without distortion */
+  display: block; /* To remove any extra space below the image */
+}
+
+/* Adjustment for mobile view */
+@media (max-width: 767.98px) {
+  .map-full-width {
+    height: 250px; /* Shorter height for mobile screens */
+  }
+}
+  object-fit: cover;
+  flex: 0 0 220px;
+}
+
+.blogCards .card {
+  display: flex;
+  flex-direction: column;
+}
+
+.blogCards .card-body {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+}
+
+.blogCards .card-body .btn {
+  margin-top: auto;
+}
+
 .article .firstImg {
   position: relative;
   overflow: hidden;
   width: 100%;
   height: 250px; }
   .article .firstImg img {
-    position: absolute; }
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; }
 .article .infoBlog {
   font-size: 1rem; }
 
